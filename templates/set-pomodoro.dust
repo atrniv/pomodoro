@@ -1,0 +1,5 @@
+<h2>Set Pomodoros<h2>
+<p>{title}</p>
+<input type="number"></input>
+<span class="save">Save</span>
+<span class="cancel">Cancel</span>

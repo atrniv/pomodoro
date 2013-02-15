@@ -1,0 +1,6 @@
+<div>
+  <h3>{title}</h3>
+  <span class="start-task">Start</span>
+  <span class="cancel-task">Cancel</span>
+  <span class="set-pomodoros">Set Pomodoros</span>
+</div>

@@ -1,0 +1,4 @@
+<h2>Delete Task<h2>
+<p>Delete {title} ?</p>
+<span class="delete">Delete</span>
+<span class="cancel">Cancel</span>

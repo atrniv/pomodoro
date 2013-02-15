@@ -1,0 +1,6 @@
+<h1>Welcome to Pomodoro {first_name} !</h1>
+<span id="logout">Logout!</span>
+<input id="new-task" name="task" type="text"></input>
+<span id="add-task">Add Task</span>
+<div id="task-list-wrapper">
+</div>

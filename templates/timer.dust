@@ -1,0 +1,20 @@
+<h1>Timer</h1>
+{@select key="{state}"}
+  {@eq value="stopped"}
+  <div class="start">
+    Start!
+  </div>
+  <span class="back">Back</span>
+  {/eq}
+  {@eq value="started"}
+  <div id="timer">
+    {minutes}:{seconds}
+  </div>
+  <span class="cancel">Cancel</span>
+  {/eq}
+  {@eq value="finished"}
+  <span class="restart">Next Pomodoro!</span>
+  <span class="finish">Finished Task</span>
+  {/eq}
+{/select}
+
