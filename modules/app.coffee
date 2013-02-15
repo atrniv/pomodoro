@@ -28,9 +28,13 @@ define [
       if not @started
         Core.history.start()
         @started = true
+      console.log status
       switch status.code
         when 2
-
+          Playlyfe.api '/me', (data) ->
+            Core.PLAYER = data
+            Core.Events.trigger 'player:load'
+            return
           break
         else
           @navigate 'login', trigger: true

@@ -13,6 +13,8 @@ define [
       @collection.on 'destroy', @render, @
       @collection.on 'add', @render, @
       @collection.on 'remove', @render, @
+      @collection.on 'reset', @render, @
+      return
 
     beforeRender:() ->
       if @collection.models.length is 0
@@ -21,3 +23,4 @@ define [
         @collection.each((model) ->
           @insertView(new TaskItemView( model: model ))
         , @)
+      return

@@ -18,7 +18,11 @@ define [
       @model.toJSON()
 
     save: () ->
-      @remove()
+      @model.set({ total: parseInt(@$('input').val()) }, { validate: true })
+      if @model.validationError?
+        @$('#error').html(@model.validationError)
+      else
+        @remove()
       return
 
     cancel: () ->

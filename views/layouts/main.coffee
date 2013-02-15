@@ -4,8 +4,9 @@ define [
   'cs!views/login'
   'cs!views/timer'
   'cs!models/timer'
+  'playlyfe'
   'rdust!templates/layouts/main'
-], (Core, WelcomeView, LoginView, TimerView, Timer) ->
+], (Core, WelcomeView, LoginView, TimerView, Timer, Playlyfe) ->
 
   MainLayout = Core.Layout.extend
 
@@ -21,10 +22,11 @@ define [
       return
 
     viewWelcome: () ->
-      welcomeView = new WelcomeView()
-      @getView('#canvas')?.remove()
-      @setView '#canvas', welcomeView
-      welcomeView.render()
+      if Playlyfe.getStatus().code is 2
+        welcomeView = new WelcomeView()
+        @getView('#canvas')?.remove()
+        @setView '#canvas', welcomeView
+        welcomeView.render()
       return
 
     viewLogin: () ->
