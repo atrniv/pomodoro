@@ -1,6 +1,10 @@
-<div>
-  <h3>{title}</h3>
-  <span class="start-task">Start</span>
-  <span class="cancel-task">Cancel</span>
-  <span class="set-pomodoros">Set Pomodoros</span>
+<div class="task-title">{title}</div>
+  <div class="options">
+    <span class="sprite start-task" title="Start Task"></span>
+    <span class="sprite cancel-task" title="Cancel Task"></span>
+    <span class="sprite set-pomodoros" title="Set Pomodoro"></span>
+  </div>
+  <div class="pomo-counter">
+
+  </div>
 </div>

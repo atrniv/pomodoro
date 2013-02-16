@@ -9,6 +9,8 @@ define [
 
     template: 'rdust!templates/items/task'
 
+    tagName: 'li'
+
     events:
       'click .start-task': 'startTask'
       'click .cancel-task': 'cancelTask'

@@ -1,1 +1,31 @@
-<div id="canvas"></div>
+<header id="header">
+  <div class="up strip"></div>
+  <div id="mid">
+    <div class="wrapper">
+      <div id="hud">Hello KHS</div>
+      <div class="logo-wrap">
+        <a id="logo">
+          <img src="images/pomodoro-logo.png">
+        </a>
+      </div>
+      <nav id="menu">
+        <ul>
+          <li><a id="logout">Logout!</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="down strip"></div>
+</header>
+
+<div id="main">
+  <div id="canvas" class="wrapper">
+  </div>
+</div>
+
+<footer id="footer">
+  <div id="powered">
+    <span class="desc">Powered By</span>
+    <div class="pl-emblem"><a href="http://www.playlyfe.com" class="pl-logo-small sprite"></a></div>
+  </div>
+</footer>

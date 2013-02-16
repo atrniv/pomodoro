@@ -1,1 +1,1 @@
-<span id="login">Login</span>
+<div id="login" class="sprite login-button"></div>

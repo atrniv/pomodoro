@@ -1,0 +1,208 @@
+@import "compass/css3";
+
+@font-face {
+  font-family: 'Fjord One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Fjord One'), local('Fjord-One'), url(http://themes.googleusercontent.com/static/fonts/fjordone/v2/k1xuy2AQ8wbv_amiU4s58z8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Chocolate Dealer';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Chocolate Dealer'), local('chocolatedealer'), url('font/chocolate-dealer.woff') format('woff');
+}
+$base-color: #ccc;
+$red-accent: #d92332;
+$page-width:1000px;
+$logo-width:252px;
+$fjord: 'Fjord-One', Georgia, "Times New Roman", Times, serif;
+
+body {
+  margin: 0;
+  padding: 0;
+  *zoom: 1;
+  font-size:16px;
+  color: $base-color;
+  font-family: $fjord;
+  background: url('../images/textures/body-texel-2.png') top left repeat;
+}
+
+.wrapper {
+  width:$page-width;
+  margin:0 auto;
+}
+
+#header {
+  position: fixed;
+  top:0; left:0;
+  width:100%;
+  color: white;
+  font-family: 'Chocolate Dealer', 'Monotype Corsiva','Apple Chancery','ITC Zapf Chancery','URW Chancery L',cursive;
+  z-index: 1000;
+  .strip {
+    background: $red-accent;
+    height: 5px;
+    width:100%;
+    position: relative;
+    left: 0;
+    z-index: 100;
+  }
+  .up { top: 0; }
+  .down { top: 10px; }
+  #mid {
+    position: relative;
+    top: 5px;
+    width: 100%;
+    height: 55px;
+    background: url('../images/textures/head-texel.png') top left repeat;
+    z-index: 200;
+    text-align: center;
+  }
+  .logo-wrap {
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width:252px;
+    #logo {
+      display: block;
+      position: relative;
+      left:-50%;
+    }
+  }
+
+  #hud, #menu {
+    float:left;
+    line-height:55px;
+    font-size:28px;
+  }
+  #menu {
+    float:right;
+    &>ul {
+      list-style: none;
+      margin: 0; padding: 0;
+      li {
+        @include inline-block();
+      }
+    }
+  }
+}
+#footer {
+  position: fixed;
+  width:100%;
+  bottom:0;
+  left:0;
+  height:50px;
+  background-color: #ebebeb;
+  background: url('../images/textures/foot-texel.png') top left repeat;
+  text-align: center;
+  border-top: 1px dotted #ddd;
+  z-index: 500;
+  #powered {
+    color: #555;
+    .desc {
+      line-height: 14px;
+      font-size: 12px;
+    }
+    .pl-emblem {
+      width:89px;
+      margin:0 auto;
+      a { display: block; }
+    }
+  }
+}
+
+#main {
+  position: relative;
+  padding:40px 20px 10px;
+  top:75px;
+
+  text-align: center;
+  color: #333;
+  font-size: 20px;
+  z-index: 50;
+}
+
+#affix {
+  width: 1000px;
+  padding: 2em 0 3em;
+  z-index: 999;
+  background: url('../images/textures/body-texel-2.png') top left repeat;
+  border-bottom: 1px dashed #ccc;
+  position: fixed;
+}
+
+#task-input-wrapper {
+  margin: 0 auto;
+  width: 400px;
+  position: relative;
+  padding:8px;
+  input {
+    height: 36px;
+    width: 380px;
+    font-size: 28px;
+    line-height: 31px;
+    padding: 2px 40px 2px 5px;
+    background-color: #ededed;
+    color: #282828;
+    font-family: $fjord;
+    z-index: 500;
+    border:1px solid #ededed;
+  }
+  #add-task {
+    display: block;
+    position: absolute;
+    top:0; right:0;
+    z-index: 501;
+  }
+}
+
+#task-list-wrapper {
+  width:600px;
+  margin: 2em auto 1em;
+  text-align: left;
+  color: #aaa;
+  ul#task-list {
+    list-style: none;
+    margin:0; padding: 0;
+    li {
+      position: relative;
+      margin:1em 0;
+      padding:0.5em 10px;
+      .no-task {
+        text-align: center;
+      }
+      .task-title {
+        font-size: 24px;
+        line-height: 36px;
+        width:480px;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+      }
+
+      .options {
+        position: absolute;
+        top: 0; right: 0;
+        padding: 10px 5px;
+        visibility: hidden;
+        .sprite {
+          @include inline-block();
+        }
+      }
+      .pomo-counter {
+        position: relative;
+        padding:5px 5px;
+      }
+      &:hover {
+        background: #babf2c;
+        color: #333;
+        .options {
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
+

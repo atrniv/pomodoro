@@ -1,6 +1,11 @@
-<h1>Welcome to Pomodoro {first_name} !</h1>
-<span id="logout">Logout!</span>
-<input id="new-task" name="task" type="text"></input>
-<span id="add-task">Add Task</span>
+<section id="affix">
+  <div id="task-input-wrapper">
+    <input id="new-task" name="task" type="text"></input>
+    <span id="add-task" class="sprite add-task"></span>
+  </div>
+</section>
+
 <div id="task-list-wrapper">
+
 </div>
+
