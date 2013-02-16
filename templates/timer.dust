@@ -17,4 +17,4 @@
   <span class="finish">Finished Task</span>
   {/eq}
 {/select}
-
+<span>{task.completed}/{task.total}</span>

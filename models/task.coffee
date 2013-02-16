@@ -7,10 +7,10 @@ define [
 
     defaults:
       'completed': 0
-      'total': 0
+      'total': 1
 
     validate: (attributes) ->
-      if attributes.total < @get('completed')
-        return 'Total pomodoros cannot be less than the number already completed.'
       if not _.isNumber(attributes.total) or _.isNaN(attributes.total)
         return 'Please enter a number'
+      if attributes.total < @get('completed')
+        return 'Total pomodoros cannot be less than the number already completed.'

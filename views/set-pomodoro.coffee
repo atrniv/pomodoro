@@ -13,6 +13,7 @@ define [
 
     initialize: () ->
       @model.on 'change', @render, @
+      return
 
     serialize: () ->
       @model.toJSON()

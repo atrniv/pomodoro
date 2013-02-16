@@ -5,6 +5,8 @@ define [
 ], (Core, Playlyfe, Task) ->
   TaskCollection = Core.Collection.extend
 
+    model: Task
+
     initialize: () ->
       @on 'change', @save, @
       @on 'add', @createFlow, @
@@ -25,7 +27,7 @@ define [
           'fmain': { ref: 'pmain', control: 'exit' }
           'fgiveup': { id: 'fgiveup', ref: 'agiveup'}
           'fcomplete_task': { id: 'fcomplete_task', ref: 'acomplete_task' }
-          'ftimer': { id: 'ftimer', ref: 'ptimer', loop: -1 }
+          'ftimer': { id: 'ftimer', ref: 'ptimer', loop: -1, smooth: false }
           'fstart_timer': { id: 'fstart_timer', ref: 'astart_timer' }
           'fstop_timer': { id: 'fstop_timer', ref: 'pstop_timer' }
           'ffinish_timer': { id: 'ffinish_timer', ref: 'afinish_timer' }

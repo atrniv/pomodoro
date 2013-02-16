@@ -16,8 +16,8 @@ define [
       'click #logout': 'logout'
 
     initialize: () ->
-      @taskList = new TaskCollection()
-      @setView '#task-list-wrapper', new TaskCollectionView( collection: @taskList ), @
+      Core.TASKLIST ?= new TaskCollection()
+      @setView '#task-list-wrapper', new TaskCollectionView( collection: Core.TASKLIST ), @
 
     checkAddTask:(e) ->
       if e.keyCode is 13 then @addTask()
@@ -25,7 +25,7 @@ define [
 
     addTask: () ->
       $taskInput = $('#new-task')
-      @taskList.add(new Task( title: $taskInput.val() ))
+      Core.TASKLIST.add(new Task( title: $taskInput.val() ))
       $taskInput.val('')
       return
 

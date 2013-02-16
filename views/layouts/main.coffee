@@ -36,8 +36,8 @@ define [
       loginView.render()
       return
 
-    viewTimer: () ->
-      timerView = new TimerView( model: new Timer() )
+    viewTimer: (task) ->
+      timerView = new TimerView( model: new Timer( rootId: task.get('rootId'), task: task.toJSON() ) )
       @getView('#canvas')?.remove()
       @setView '#canvas', timerView
       timerView.render()
