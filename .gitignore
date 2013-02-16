@@ -1,2 +1,4 @@
 .sass-cache
 styles/*
+*.fw.png
+*.orig
