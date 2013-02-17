@@ -3,7 +3,7 @@
 
   <span id="error"></span>
 
-  <span class="task-name">{title}</span>
+  <div class="task-name">{title}</div>
 
   <ul class="pomo-rate clearfix">
     <li class="rate-item" data-value="7"></li>

@@ -1,0 +1,13 @@
+<div id="content">
+  <h4>Did you finish the task?</h4>
+
+  <span id="error"></span>
+
+  <p>If you have completed the task<div class="task-name">{title}</div> then click on the tick to remove it from your task-list.</p>
+
+  <div class="actions">
+    <span class="ok" title="Completed"><i>&#10004;</i></span>
+    <span class="cancel back" title="Cancel"><i>&#10006;</i></span>
+  </div>
+</div>
+<div id="mask"></div>

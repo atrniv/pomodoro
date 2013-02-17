@@ -3,7 +3,7 @@
 
   <span id="error"></span>
 
-  <p>do you want the task<span class="task-name">{title}?</span>to be deleted?</p>
+  <p>do you want the task<div class="task-name">{title}?</div>to be deleted?</p>
 
   <div class="actions">
     <span class="delete" title="Delete"><i>&#10004;</i></span>

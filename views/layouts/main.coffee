@@ -42,7 +42,7 @@ define [
       return
 
     viewTimer: (task) ->
-      timerView = new TimerView( model: new Timer( rootId: task.get('rootId'), task: task.toJSON() ) )
+      timerView = new TimerView( model: new Timer( {rootId: task.get('rootId'), task: task} ) )
       @getView('#canvas')?.remove()
       @setView '#canvas', timerView
       timerView.render()

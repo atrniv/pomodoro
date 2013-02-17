@@ -285,18 +285,17 @@ body {
     z-index: 2001;
     color: #444;
     text-align: center;
+    font-size:18px;
     h4 {
       margin-top: 0px;
       color: #666;
     }
-    span.task-name {
+    .task-name {
       display: block;
       overflow: hidden;
       color: $red-accent;
       font-weight: bold;
-      font-size:28px;
       width:100%;
-      word-break:break-all;
     }
     p {
       margin:3px 0;
@@ -332,7 +331,7 @@ body {
       font-size:20px;
       margin-top: 20px;
     }
-    .save, .back, .delete {
+    .save, .back, .delete, .ok {
       cursor: pointer;
       font-size:20px;
       line-height:32px;

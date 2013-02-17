@@ -1,6 +1,6 @@
 <div class="task-title">
   <span>
-    {task.title}
+    {taskName}
   </span>
 </div>
 <div id="pomo-ctr" class="clearfix">

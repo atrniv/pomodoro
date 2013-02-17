@@ -1,8 +1,9 @@
 define [
   'cs!modules/core'
   'playlyfe'
+  'cs!views/complete'
   'rdust!templates/timer'
-], (Core, Playlyfe) ->
+], (Core, Playlyfe, CompleteTaskView) ->
   TimerView = Core.Layout.extend
 
     id: 'taskCenter'
@@ -19,6 +20,7 @@ define [
 
     initialize: () ->
       @model.on 'change', @render, @
+      @model.get('task').on 'change', @render, @
       Playlyfe.api "/trees/#{@model.get('rootId')}/journal", (data) ->
         # console.log data
         return
@@ -29,17 +31,28 @@ define [
 
     serialize: () ->
       data = @model.toJSON()
+      data.taskName = data.task.get('title')
       data.pomoDone = new Array()
-      data.pomoDone.length = data.task.completed
       data.pomoLeft = new Array()
-      data.pomoLeft.length = data.task.total - data.task.completed
-      console.log data
+      data.pomoDone.length = data.task.get('completed')
+
+      left = data.task.get('total') - data.task.get('completed')
+      if left > 0
+        data.pomoLeft.length = left
+      else
+        data.pomoLeft.length = 0
+      console.log 'Data = ', data
       data
 
     start: () ->
       self = @
       Playlyfe.api "/trees/#{@model.get('rootId')}/flows/ftimer/play", 'POST', () ->
         Playlyfe.api "/trees/#{self.model.get('rootId')}/flows/fstart_timer/play", 'POST', () ->
+          _comp = self.model.get('task').get('completed')
+          _total = self.model.get('task').get('total')
+          if _comp >= _total
+            console.log 'Setting total eq', _comp+1
+            self.model.get('task').set('total':_comp+1)
           self.model.set state: 'started'
           return
         return
@@ -57,19 +70,13 @@ define [
       return
 
     restart: () ->
-      self = @
-      Playlyfe.api "/trees/#{@model.get('rootId')}/flows/fstart_timer/play", 'POST', () ->
-        self.model.set state: 'started'
-        return
-      @model.set state: 'started'
+      @start()
       return
 
     finish: () ->
-      self = @
-      Playlyfe.api "/trees/#{@model.get('rootId')}/flows/ffinish_timer/play", 'POST', () ->
-        self.model.set(self.model.get('completed') + 1)
-        Core.Events.trigger 'stop-timer'
-        return
+      # TODO : end task, remove from collection
+      @insertView new CompleteTaskView( model: @model )
+      @render()
       return
 
 
