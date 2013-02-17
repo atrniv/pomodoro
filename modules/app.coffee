@@ -11,16 +11,16 @@ define [
       'login' : 'login'
 
     initialize: () ->
-      @started = 0
+      @started = false
+
+      Playlyfe.onStatusChange @handleStatus, @
 
       @mainLayout = new MainLayout( el: '#app' )
       @mainLayout.render()
 
-      Playlyfe.onStatusChange @handleStatus, @
-
       Playlyfe.init
-        client_id: 'ZTQ5YjVjNDUtNGVmMy00NzQxLWJmZjUtMWFlN2ExM2JjMzhh'
-        redirect_uri: "http://games.playlyfe.com/pomodoro"
+        client_id: 'MWUyZDQzNWMtY2NkZS00ZjdkLTg5MmYtZjE1ODZhZmZlZGRm'
+        redirect_uri: "http://games.localhost:8080/pomodoro"
 
       return
 
@@ -28,7 +28,6 @@ define [
       if not @started
         Core.history.start()
         @started = true
-      console.log status
       switch status.code
         when 2
           Playlyfe.api '/me', (data) ->
@@ -37,6 +36,7 @@ define [
             return
           break
         else
+          Core.PLAYER = null
           @navigate 'login', trigger: true
           break
       return

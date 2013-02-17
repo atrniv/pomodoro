@@ -13,11 +13,9 @@ define [
     events:
       'click #add-task': 'addTask'
       'keypress #new-task': 'checkAddTask'
-      'click #logout': 'logout'
 
     initialize: () ->
       Core.TASKLIST ?= new TaskCollection()
-      @setView '#task-list-wrapper', new TaskCollectionView( collection: Core.TASKLIST ), @
 
     checkAddTask:(e) ->
       if e.keyCode is 13 then @addTask()
@@ -29,10 +27,6 @@ define [
       $taskInput.val('')
       return
 
-    logout: () ->
-      Playlyfe.logout()
+    beforeRender: () ->
+      @setView '#task-list-wrapper', new TaskCollectionView( collection: Core.TASKLIST ), @
       return
-
-    serialize: () ->
-      { first_name: 'Test' }
-

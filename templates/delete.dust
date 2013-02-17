@@ -1,4 +1,13 @@
-<h2>Delete Task<h2>
-<p>Delete {title} ?</p>
-<span class="delete">Delete</span>
-<span class="cancel">Cancel</span>
+<div id="content">
+  <h4>Delete Task?</h4>
+
+  <span id="error"></span>
+
+  <p>do you want the task<span class="task-name">{title}?</span>to be deleted?</p>
+
+  <div class="actions">
+    <span class="delete" title="Delete"><i>&#10004;</i></span>
+    <span class="cancel back" title="Cancel"><i>&#10006;</i></span>
+  </div>
+</div>
+<div id="mask"></div>

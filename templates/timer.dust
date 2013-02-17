@@ -1,20 +1,32 @@
-<h1>Timer</h1>
-{@select key="{state}"}
-  {@eq value="stopped"}
-  <div class="start">
-    Start!
-  </div>
-  <span class="back">Back</span>
-  {/eq}
-  {@eq value="started"}
-  <div id="timer">
-    {minutes}:{seconds}
-  </div>
-  <span class="cancel">Cancel</span>
-  {/eq}
-  {@eq value="finished"}
-  <span class="restart">Next Pomodoro!</span>
-  <span class="finish">Finished Task</span>
-  {/eq}
-{/select}
-<span>{task.completed}/{task.total}</span>
+<div class="task-title">
+  <span>
+    {task.title}
+  </span>
+</div>
+<div id="pomo-ctr" class="clearfix">
+  {#pomoDone}
+  <span class="ctr-item sprite pomo-done"></span>
+  {/pomoDone}
+  {#pomoLeft}
+  <span class="ctr-item sprite pomo-fail"></span>
+  {/pomoLeft}
+</div>
+<div id="clock-wrap">
+  {@select key="{state}"}
+    {@eq value="stopped"}
+    <canvas id="clock" width="300" height="300">
+    </canvas>
+    <div class="clock-state start">Start</div>
+    <div class="task-choice back">Back</div>
+    {/eq}
+    {@eq value="started"}
+    <canvas id="clock" data-min="{minutes}" data-sec="{seconds}" width="300" height="300"></canvas>
+    <div class="task-choice cancel">Cancel</div>
+    {/eq}
+    {@eq value="finished"}
+    <canvas id="clock" width="300" height="300"></canvas>
+    <div class="clock-state restart">Restart</div>
+    <div class="task-choice finish">Completed</div>
+    {/eq}
+  {/select}
+</div>

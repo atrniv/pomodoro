@@ -24,7 +24,10 @@ define [
 
     serialize: () ->
       if @model?
-        @model.toJSON()
+        data = @model.toJSON()
+        data.totalPomo = new Array()
+        data.totalPomo.length = data.total
+        data
 
     startTask: () ->
       Core.Events.trigger 'start-task', @model

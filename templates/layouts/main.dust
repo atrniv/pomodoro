@@ -1,17 +1,15 @@
 <header id="header">
   <div class="up strip"></div>
   <div id="mid">
-    <div class="wrapper">
-      <div id="hud">Hello KHS</div>
-      <div class="logo-wrap">
-        <a id="logo">
-          <img src="images/pomodoro-logo.png">
-        </a>
-      </div>
+    <div class="wrapper clearfix">
+      <div id="hud">{?user}Hello {user.first_name}{/user}</div>
+      <a id="logo">
+        <img src="images/pomodoro-logo.png">
+      </a>
       <nav id="menu">
-        <ul>
-          <li><a id="logout">Logout!</a></li>
-        </ul>
+      {?user}
+        <ul><li><a id="logout">Logout</a></li></ul>
+      {/user}
       </nav>
     </div>
   </div>
@@ -24,8 +22,10 @@
 </div>
 
 <footer id="footer">
-  <div id="powered">
-    <span class="desc">Powered By</span>
-    <div class="pl-emblem"><a href="http://www.playlyfe.com" class="pl-logo-small sprite"></a></div>
+  <div class="wrapper">
+    <div id="powered">
+      <span class="desc">Powered by</span>
+      <span class="pl-emblem"><a href="http://www.playlyfe.com" class="pl-logo-small sprite"></a></span>
+    </div>
   </div>
 </footer>

@@ -4,7 +4,9 @@
     <span class="sprite cancel-task" title="Cancel Task"></span>
     <span class="sprite set-pomodoros" title="Set Pomodoro"></span>
   </div>
-  <div class="pomo-counter">
-
+  <div class="pomo-counter clearfix">
+  {#totalPomo}
+    <div class="pomo-counter-item"></div>
+  {/totalPomo}
   </div>
 </div>

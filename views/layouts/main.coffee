@@ -12,9 +12,14 @@ define [
 
     template: 'rdust!templates/layouts/main'
 
+    events:
+      'click #logout': 'logout'
+
     initialize: () ->
+      Core.Events.on 'player:load', @render, @
       Core.Events.on 'start-task', @viewTimer, @
       Core.Events.on 'stop-timer', @viewWelcome, @
+      Playlyfe.onStatusChange @render, @
       return
 
     cleanup: () ->
@@ -43,4 +48,9 @@ define [
       timerView.render()
       return
 
+    logout: () ->
+      Playlyfe.logout()
+      return
 
+    serialize: () ->
+      { user: Core.PLAYER }

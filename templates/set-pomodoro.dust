@@ -1,6 +1,26 @@
-<h2>Set Pomodoros<h2>
-<p>{title}</p>
-<span id="error"></span>
-<input type="number"></input>
-<span class="save">Save</span>
-<span class="cancel">Cancel</span>
+<div id="content">
+  <h4>How long is the task gonna take?</h4>
+
+  <span id="error"></span>
+
+  <span class="task-name">{title}</span>
+
+  <ul class="pomo-rate clearfix">
+    <li class="rate-item" data-value="7"></li>
+    <li class="rate-item" data-value="6"></li>
+    <li class="rate-item" data-value="5"></li>
+    <li class="rate-item" data-value="4"></li>
+    <li class="rate-item" data-value="3"></li>
+    <li class="rate-item" data-value="2"></li>
+    <li class="rate-item" data-value="1"></li>
+  </ul>
+
+  <p><span id="pomo-count">{total}</span> Pomodoros</p>
+  <span id="pomo-minutes">{total_minutes} minutes</span>
+
+  <div class="actions">
+    <span class="save" title="Save"><i>&#10004;</i></span>
+    <span class="cancel back" title="Cancel"><i>&#10006;</i></span>
+  </div>
+</div>
+<div id="mask"></div>

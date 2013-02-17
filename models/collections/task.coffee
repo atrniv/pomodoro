@@ -62,7 +62,6 @@ define [
       response.data
 
     fetch: (options) ->
-      console.log 'fetching'
       self = @
       Playlyfe.api @url(), (response) ->
         if response?

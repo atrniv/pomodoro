@@ -6,20 +6,24 @@ define [
   SetPomodoroView = Core.Layout.extend
 
     template: 'rdust!templates/set-pomodoro'
+    id: 'modal'
 
     events:
       'click .save': 'save'
       'click .cancel': 'cancel'
+      'click .rate-item': 'setPomo'
 
     initialize: () ->
       @model.on 'change', @render, @
       return
 
     serialize: () ->
-      @model.toJSON()
+      data = @model.toJSON()
+      data.total_minutes = data.total * 25
+      data
 
     save: () ->
-      @model.set({ total: parseInt(@$('input').val()) }, { validate: true })
+      @model.set({ total: parseInt(@$('.set-pomo').data('value')) }, { validate: true })
       if @model.validationError?
         @$('#error').html(@model.validationError)
       else
@@ -29,3 +33,13 @@ define [
     cancel: () ->
       @remove()
       return
+
+    setPomo: (e) ->
+      $el = $(e.target)
+      $el.siblings().removeClass('set-pomo')
+      $el.addClass('set-pomo')
+      @$('#pomo-count').text($el.data('value'))
+      @$('#pomo-minutes').text("#{$el.data('value')*25} minutes")
+
+    afterRender: () ->
+      @$("[data-value='#{@model.get('total')}']").addClass('set-pomo')

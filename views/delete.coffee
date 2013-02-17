@@ -5,6 +5,7 @@ define [
 
   DeleteTaskView = Core.Layout.extend
 
+    id: 'modal'
     template: 'rdust!templates/delete'
 
     events:
