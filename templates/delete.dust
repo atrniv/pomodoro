@@ -1,9 +1,9 @@
 <div id="content">
-  <h4>Delete Task?</h4>
+  <h3>Delete Task?</h3>
 
-  <span id="error"></span>
+  <p>Do you want the task<div class="task-name">{title}</div>to be deleted?</p>
 
-  <p>do you want the task<div class="task-name">{title}?</div>to be deleted?</p>
+  <div id="error"></div>
 
   <div class="actions">
     <span class="delete" title="Delete"><i>&#10004;</i></span>

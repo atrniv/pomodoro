@@ -19,7 +19,7 @@
   src: local('Chocolate Dealer'), local('chocolatedealer'), url('font/chocolate-dealer.woff') format('woff');
 }
 $base-color: #ccc;
-$red-accent: #d92332;
+$red: #d92332;
 $page-width:1000px;
 $logo-width:252px;
 $base-font: 'Roboto', Verdana, sans-serif;
@@ -61,6 +61,7 @@ body {
   margin:0 auto;
 }
 #header {
+  @include no-select();
   position: fixed;
   top:0; left:0;
   width:100%;
@@ -70,7 +71,7 @@ body {
   z-index: 1000;
   background: url('../images/texels/body-main.png') top left repeat;
   .strip {
-    background: $red-accent;
+    background: $red;
     height: 5px;
     width:100%;
     position: relative;
@@ -86,7 +87,6 @@ body {
     height: 55px;
     background: url('../images/texels/head-main.png') top left repeat;
     z-index: 200;
-    text-align: center;
   }
   #logo {
     z-index: 1000;
@@ -108,6 +108,7 @@ body {
       list-style: none;
       margin: 0; padding: 0;
       li {
+        cursor: pointer;
         @include inline-block();
       }
     }
@@ -150,7 +151,7 @@ body {
     text-transform: uppercase;
     font-weight: 300;
     a {
-      color: #d92332;
+      color: $red;
       @include no-anchor();
     }
   }
@@ -178,12 +179,11 @@ body {
   font-weight: 300;
   text-align: center;
 }
-
 #gyan {
   text-align: left;
   h3 {
     text-transform: uppercase;
-    color: #d92332;
+    color: $red;
     @include text-shadow(rgba(black, 0.5) 0 2px 2px);
   }
   p {
@@ -191,21 +191,20 @@ body {
     font-size: 14px;
     line-height: 21px;
     em {
-      color: #d92332;
+      color: $red;
       font-weight: 400;
     }
     a {
-      color: #d92332;
+      color: $red;
       @include no-anchor();
     }
   }
-
 }
 #time-machine {
   margin-top:30px;
   @include text-shadow(rgba(black, 0.5) 0 2px 2px);
   text-transform: uppercase;
-  color: #d92332;
+  color: $red;
   .med { font-size:36px; line-height:36px; }
   .conn {
     hr { width: 120px; @include inline-block(); height:2px; background-color: white; }
@@ -259,12 +258,15 @@ body {
   }
 }
 
+#canvas {
+  padding-top:40px;
+  text-align: center;
+}
 
 #affix {
   width: 1000px;
   padding: 0 0 1.5em;
   z-index: 999;
-  // background: url('../images/textures/body-texel-2.png') top left repeat;
   border-bottom: 1px dashed #ccc;
   position: relative;
 }
@@ -274,9 +276,13 @@ body {
   position: relative;
   padding:8px;
   label {
-    color: $red-accent;
-    font-size:22px;
-    text-align: center;
+    text-transform: uppercase;
+    @include text-shadow(rgba(black, 0.5) 0 2px 2px);
+    font-weight: 300;
+    color: $red;
+    font-size:20px;
+    line-height: 24px;
+    cursor: pointer;
   }
   input {
     height: 36px;
@@ -293,24 +299,21 @@ body {
     border:1px solid #ededed;
     outline:none;
     &:focus, &:hover {
-      border-color: $red-accent;
-      box-shadow:0 0 10px $red-accent;
+      border-color: $red;
+      box-shadow:0 0 10px $red;
     }
   }
-  #add-task-dummy {
+  .btn {
     display: block;
     position: absolute;
-    top:39px; right:0;
+    top:34px; right:0;
     z-index: 501;
+    cursor: pointer;
   }
   #add-task {
-    opacity: 0;
-    display: block;
-    position: absolute;
-    top:39px; right:1;
     z-index: 502;
+    opacity: 0;
     @include transition(opacity, 0.2s, ease, 0.2s);
-    cursor: pointer;
     &:hover {
       opacity:1;
       @include transition(opacity, 0.2s, ease, 0.6s);
@@ -328,12 +331,13 @@ body {
   overflow: hidden;
   ul#task-list {
     list-style: none;
-    margin:0; padding: 0;
+    margin:0; padding:0;
     &>li {
       position: relative;
       margin: 0;
       padding:0.2em 10px;
       .no-task {
+        h3 { text-transform: uppercase; color: $red; }
         text-align: center;
       }
       .task-title {
@@ -357,6 +361,7 @@ body {
       .pomo-counter {
         visibility: hidden;
         position: relative;
+        width:480px;
         padding:5px 5px;
         .pomo-counter-item {
           background: url('icons/icons.png') -136px -56px;
@@ -385,34 +390,77 @@ body {
     background-color: rgba(0,0,0,0.8);
     z-index: 2000;
   }
+  #alert {
+    position: fixed;
+    top:20%;
+    left:50%;
+    width:600px;
+    margin-left:-300px;
+    box-sizing:border-box;
+    border:1px dashed darken($red,20%);
+    background: $red;
+    color: #ededed;
+    padding:1em 2em;
+    z-index: 2001;
+    font-size: 14px;
+    line-height: 21px;
+    h3, h5 {
+      text-transform: uppercase;
+      margin-top: 0;
+      font-weight: 700;
+    }
+    .suggest {
+      font-style: italic;
+    }
+  }
   #content {
     position: fixed;
     top: 20%;
     left: 50%;
-    margin-left: -200px;
+    margin-left: -300px;
     box-sizing:border-box;
-    width: 400px;
+    width: 600px;
     background-color: white;
-    border:5px solid $red-accent;
+    border:5px solid $red;
     @include border-radius(20px);
     padding: 20px 30px;
     z-index: 2001;
     color: #444;
     text-align: center;
     font-size:18px;
-    h4 {
-      margin-top: 0px;
+    h3 {
+      text-transform: uppercase;
+      font-weight: 300;
+      @include text-shadow(rgba(black, 0.5) 0 1px 0.5px);
+      margin-top: 0;
       color: #666;
+      .subtext {
+        display: block;
+        font-size:14px;
+        @include text-shadow(rgba(black, 0.2) 0 1px 0.5px);
+        text-transform: uppercase;
+        font-weight: 400;
+        color: #aaa;
+      }
     }
     .task-name {
       display: block;
       overflow: hidden;
-      color: $red-accent;
       font-weight: bold;
       width:100%;
     }
     p {
       margin:3px 0;
+      font-size: 16px;
+      line-height: 21px;
+    }
+    #error {
+      display: none;
+      color: $red;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 18px;
+      padding: 10px 5px 0;
     }
     ul.pomo-rate {
       list-style: none;
@@ -425,61 +473,65 @@ body {
         float: right;
         width: 32px;
         height: 32px;
-        background: url('icons/icons.png') -32px -176px;
-        &:hover, &.set-pomo {
-          background-position: -64px -176px;
-          & ~ li {
-            background-position: -64px -176px;
-          }
+        background: url('icons/icons.png') -104px -56px;
+        &:hover {
+          background-position: 0 -108px;
+          & ~ .set-pomo { background-position: -32px -108px; }
+          & ~ li { background-position: 0 -108px; }
+        }
+        &.set-pomo {
+          background-position: -32px -108px;
+          & ~ li { background-position: -32px -108px; }
         }
       }
     }
-    #pomo-minutes {
+    .pomo-count, .pomo-mins {
       text-transform: uppercase;
+      color: #333333;
+      font-size:16px;
+    }
+    .pomo-mins {
       color: #aaaaaa;
-      font-size:13px;
+      font-size:14px;
     }
     .actions {
       position: relative;
       width: 100%;
-      font-size:20px;
-      margin-top: 20px;
+      margin-top: 10px;
     }
-    .save, .back, .delete, .ok {
+    .save, .cancel, .delete, .ok {
       cursor: pointer;
-      font-size:20px;
-      line-height:32px;
+      font-size:45px;
       color: #24bc36;
-      padding:0 5px;
+      padding:0 10px;
       i {
         font-style: normal;
-        font-size:32px;
-        line-height:32px;
       }
     }
-    .back {
-      color: #aaaaaa;
+    .save, .ok {
+      color: darken(#24bc36,10%);
+      &:hover { color: #24bc36; }
     }
-    .delete {
-      color: $red-accent;
+    .cancel { color: #aaaaaa; font-size: 40px;
+      &:hover { color: #0c7ec4; }
+    }
+    .delete { color: $red;
+      &:hover { color: darken($red,20%); }
     }
   }
 }
 
 
 #taskCenter {
-  .task-title {
-    background-color: #333;
-    border:1px solid #444;
-    @include border-radius(5px);
-    padding:10px 30px;
-    & > span {
-      color:#aaaaaa;
-      font-size:24px;
-      font-weight: bold;
-      line-height: 30px;
-      word-break: break-all;
-    }
+  #task-title {
+    color:#aaaaaa;
+    padding:5px 30px;
+    font-size:26px;
+    line-height: 30px;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   #clock-wrap {
     position: relative;

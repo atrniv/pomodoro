@@ -2,8 +2,9 @@ define [
   'cs!modules/core'
   'playlyfe'
   'cs!views/complete'
+  'cs!views/alert'
   'rdust!templates/timer'
-], (Core, Playlyfe, CompleteTaskView) ->
+], (Core, Playlyfe, CompleteTaskView, AlertView) ->
   TimerView = Core.Layout.extend
 
     id: 'taskCenter'
@@ -41,7 +42,6 @@ define [
         data.pomoLeft.length = left
       else
         data.pomoLeft.length = 0
-      console.log 'Data = ', data
       data
 
     start: () ->
@@ -50,10 +50,13 @@ define [
         Playlyfe.api "/trees/#{self.model.get('rootId')}/flows/fstart_timer/play", 'POST', () ->
           _comp = self.model.get('task').get('completed')
           _total = self.model.get('task').get('total')
-          if _comp >= _total
-            console.log 'Setting total eq', _comp+1
-            self.model.get('task').set('total':_comp+1)
-          self.model.set state: 'started'
+          if _total < 7
+            if _comp >= _total
+              self.model.get('task').set('total':_comp + 1)
+            self.model.set state: 'started'
+          else
+            self.insertView new AlertView()
+            self.render()
           return
         return
       return

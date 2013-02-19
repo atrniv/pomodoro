@@ -1,8 +1,4 @@
-<div class="task-title">
-  <span>
-    {taskName}
-  </span>
-</div>
+<div id="task-title">{taskName}</div>
 <div id="pomo-ctr" class="clearfix">
   {#pomoDone}
   <span class="ctr-item sprite pomo-done"></span>

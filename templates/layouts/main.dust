@@ -4,11 +4,11 @@
   <div id="mid">
     <div class="wrapper clearfix">
       <div id="hud">Hello {user.first_name}</div>
-      <a id="logo">
+      <a id="logo" href="/pomodoro">
         <img src="images/pomodoro-logo.png">
       </a>
       <nav id="menu">
-        <ul><li><a id="logout">Logout</a></li></ul>
+        <ul><li><a id="logout" title="Sign off and chill out!">Logout</a></li></ul>
       </nav>
     </div>
   </div>
@@ -25,18 +25,22 @@
   <div class="trim">
   </div>
   <div class="wrapper clearfix">
+  {^user}
     <nav id="help-nav">
       <ul>
         <li class="nav-item"><a href="#splash">Welcome</a></li>
         <li class="nav-item"><a href="#splash/technique">The Technique</a></li>
       </ul>
     </nav>
+  {/user}
     <nav id="about-nav">
       <ul>
+      {^user}
         <li class="nav-item"><a href="#splash/about">About Playlyfe</a></li>
+      {/user}
         <li class="nav-item">&copy; Playlyfe, 2013</li>
         <li class="nav-item">
-            <a href="http://www.playlyfe.com" class="pl-logo-small sprite"></a>
+            <a href="http://playlyfe.com" class="pl-logo-small sprite"></a>
         </li>
       </ul>
     </nav>

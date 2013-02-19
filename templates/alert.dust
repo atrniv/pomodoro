@@ -1,0 +1,15 @@
+<div id="alert">
+  <h3>{title}</h3>
+
+  <p>The Pomodoro technique works best when the tasks are easy to do in a few pomodoro cycles. You have not completed the task in 7 cycles, meaning either
+  <blockquote>The task is too complex to be completed in a few sittings.
+    <div class="suggest">We suggest you break up the task into smaller chunks which are manageable</div>
+  </blockquote>
+  <h5>OR</h5>
+  <blockquote>You are distracted!
+    <div class="suggest">Yes, we know... It is hard to cut out everything. So prioritize: Is the thing distracting you more important right now? If yes, then attend to that first. Then come back and start over.
+  </blockquote>
+
+  <h5 class="tip">click anywhere to dismiss this info-box</h5>
+</div>
+<div id="mask"></div>

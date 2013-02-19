@@ -2,7 +2,7 @@
   <div class="options">
     <span class="sprite start-task" title="Start Task"></span>
     <span class="sprite cancel-task" title="Cancel Task"></span>
-    <span class="sprite set-pomodoros" title="Set Pomodoro"></span>
+    <span class="sprite set-pomidoro" title="Set Pomodoro"></span>
   </div>
   <div class="pomo-counter clearfix">
   {#totalPomo}

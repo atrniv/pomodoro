@@ -1,4 +1,4 @@
-define ['require', 'backbone', 'backbone-layout-manager', 'state-machine'], (require, Backbone, LayoutManager, StateMachine) ->
+define ['require', 'backbone', 'backbone-layout-manager'], (require, Backbone, LayoutManager) ->
   Backbone.Layout.configure
     manage: true
     fetch: (name) ->
@@ -11,5 +11,4 @@ define ['require', 'backbone', 'backbone-layout-manager', 'state-machine'], (req
         return
       )
       return
-  Backbone.StateMachine = StateMachine
   Backbone

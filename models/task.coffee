@@ -11,6 +11,6 @@ define [
 
     validate: (attributes) ->
       if not _.isNumber(attributes.total) or _.isNaN(attributes.total)
-        return 'Please enter a number'
+        return 'Please select atleast one pomodoro'
       if attributes.total < @get('completed')
-        return 'Total pomodoros cannot be less than the number already completed.'
+        return 'Total pomidoro cannot be less than the number already completed.'

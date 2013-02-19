@@ -25,7 +25,7 @@ define [
     save: () ->
       @model.set({ total: parseInt(@$('.set-pomo').data('value')) }, { validate: true })
       if @model.validationError?
-        @$('#error').html(@model.validationError)
+        @$('#error').html(@model.validationError).show()
       else
         @remove()
       return
@@ -38,8 +38,8 @@ define [
       $el = $(e.target)
       $el.siblings().removeClass('set-pomo')
       $el.addClass('set-pomo')
-      @$('#pomo-count').text($el.data('value'))
-      @$('#pomo-minutes').text("#{$el.data('value')*25} minutes")
+      @$('.pomo-count').text("#{$el.data('value')} pomidoro")
+      @$('.pomo-mins').text("#{$el.data('value')*25} minutes")
 
     afterRender: () ->
       @$("[data-value='#{@model.get('total')}']").addClass('set-pomo')

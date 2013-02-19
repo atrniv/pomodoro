@@ -2,8 +2,8 @@
   <div id="task-input-wrapper">
     <label for="new-task">Add a task</label>
     <input id="new-task" name="task" type="text"></input>
-    <span id="add-task-dummy" class="sprite add-task"></span>
-    <span id="add-task" class="sprite add-task-hover"></span>
+    <span class="sprite add-task btn"></span>
+    <span id="add-task" class="sprite add-task-hover btn"></span>
   </div>
 </section>
 

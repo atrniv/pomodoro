@@ -1,9 +1,11 @@
 <div id="content">
-  <h4>How long is the task gonna take?</h4>
+  <h3>Estimate Task Length
+  <div class="subtext">1 Pomodoro = 25 Minutes</div>
+  </h3>
 
-  <span id="error"></span>
-
+  <p>Decide how many minutes you'll need for</p>
   <div class="task-name">{title}</div>
+  <p>then select equivalent number of pomidoro</p>
 
   <ul class="pomo-rate clearfix">
     <li class="rate-item" data-value="7"></li>
@@ -15,8 +17,10 @@
     <li class="rate-item" data-value="1"></li>
   </ul>
 
-  <p><span id="pomo-count">{total}</span> Pomodoros</p>
-  <span id="pomo-minutes">{total_minutes} minutes</span>
+  <div class="pomo-count">{total} pomidoro</div>
+  <div class="pomo-mins">about {total_minutes} minutes</div>
+
+  <div id="error"></div>
 
   <div class="actions">
     <span class="save" title="Save"><i>&#10004;</i></span>

@@ -14,7 +14,7 @@ define [
     events:
       'click .start-task': 'startTask'
       'click .cancel-task': 'cancelTask'
-      'click .set-pomodoros': 'setPomodoros'
+      'click .set-pomidoro': 'setPomidoro'
 
     initialize: () ->
       if @model?
@@ -36,7 +36,7 @@ define [
       @insertView new DeleteTaskView( model: @model )
       @render()
 
-    setPomodoros: () ->
+    setPomidoro: () ->
       @insertView new SetPomodoroView( model: @model )
       @render()
 

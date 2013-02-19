@@ -23,7 +23,9 @@ define [
 
     addTask: () ->
       $taskInput = $('#new-task')
-      Core.TASKLIST.add(new Task( title: $taskInput.val() ))
+      taskTitle = $taskInput.val().trim(' ')
+      return if taskTitle.length is 0
+      Core.TASKLIST.add(new Task( title: taskTitle ))
       $taskInput.val('')
       return
 

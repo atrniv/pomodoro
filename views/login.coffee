@@ -62,9 +62,7 @@ define [
       do () ->
         canvas = @$('#clock').get(0)
         ctx = canvas.getContext('2d')
-
         MAXTIME = TIME = 10
-
         W = canvas.width
         H = canvas.height
         R = W/2-10
@@ -87,7 +85,7 @@ define [
           return
 
         tweenTimer = () ->
-          self.clearCanvas()
+          # self.clearCanvas()
           drawTicks()
           TIME -= 0.1
           hue = (MAXTIME-TIME)/MAXTIME*120
