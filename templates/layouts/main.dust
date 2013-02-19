@@ -1,20 +1,20 @@
+{?user}
 <header id="header">
   <div class="up strip"></div>
   <div id="mid">
     <div class="wrapper clearfix">
-      <div id="hud">{?user}Hello {user.first_name}{/user}</div>
+      <div id="hud">Hello {user.first_name}</div>
       <a id="logo">
         <img src="images/pomodoro-logo.png">
       </a>
       <nav id="menu">
-      {?user}
         <ul><li><a id="logout">Logout</a></li></ul>
-      {/user}
       </nav>
     </div>
   </div>
   <div class="down strip"></div>
 </header>
+{/user}
 
 <div id="main">
   <div id="canvas" class="wrapper">
@@ -22,10 +22,23 @@
 </div>
 
 <footer id="footer">
-  <div class="wrapper">
-    <div id="powered">
-      <span class="desc">Powered by</span>
-      <span class="pl-emblem"><a href="http://www.playlyfe.com" class="pl-logo-small sprite"></a></span>
-    </div>
+  <div class="trim">
+  </div>
+  <div class="wrapper clearfix">
+    <nav id="help-nav">
+      <ul>
+        <li class="nav-item"><a href="#splash">Welcome</a></li>
+        <li class="nav-item"><a href="#splash/technique">The Technique</a></li>
+      </ul>
+    </nav>
+    <nav id="about-nav">
+      <ul>
+        <li class="nav-item"><a href="#splash/about">About Playlyfe</a></li>
+        <li class="nav-item">&copy; Playlyfe, 2013</li>
+        <li class="nav-item">
+            <a href="http://www.playlyfe.com" class="pl-logo-small sprite"></a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </footer>

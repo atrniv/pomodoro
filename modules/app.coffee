@@ -8,20 +8,18 @@ define [
 
     routes:
       '' : 'welcome'
-      'login' : 'login'
+      'splash' : 'splash'
+      'splash/:info': 'showScreen'
 
     initialize: () ->
       @started = false
-
       Playlyfe.onStatusChange @handleStatus, @
-
       @mainLayout = new MainLayout( el: '#app' )
       @mainLayout.render()
-
+      # @handleStatus({code:0})
       Playlyfe.init
         client_id: 'MWUyZDQzNWMtY2NkZS00ZjdkLTg5MmYtZjE1ODZhZmZlZGRm'
         redirect_uri: "http://games.localhost:8080/pomodoro"
-
       return
 
     handleStatus: (status) ->
@@ -37,13 +35,16 @@ define [
           break
         else
           Core.PLAYER = null
-          @navigate 'login', trigger: true
+          @navigate 'splash', trigger: true
           break
       return
 
-    login: () ->
+    splash: () ->
       @mainLayout.viewLogin()
       return
+
+    showScreen: (info) ->
+      Core.Events.trigger "splash", info
 
     welcome: () ->
       @mainLayout.viewWelcome()

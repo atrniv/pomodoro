@@ -193,6 +193,7 @@ define [
         return
 
     showClockAnimation: () ->
+      self = @
       do () ->
         canvas = $('#clock').get(0)
         ctx = canvas.getContext('2d')
@@ -208,6 +209,9 @@ define [
         fgColor2 = 'hsl(120, 95%, 50%)'
 
         drawTicks = () ->
+          if TIME < 0.1
+            TIME = 1e-6
+            clearInterval(animation_loop)
           radians = (TIME/MAXTIME) * (2 * Math.PI)
           ctx.beginPath()
           ctx.strokeStyle = fgColor1
@@ -227,14 +231,13 @@ define [
         tweenTimer = () ->
           # beware here, the TIME goes into negative values
           # if unexpected behaviour occurs, this is be the usual suspect
-          if(TIME < 0.2)
-            clearInterval(animation_loop)
           TIME -= 0.1
+          self.clearCanvas()
+          drawTicks()
           hue = 120-((MAXTIME-TIME)/MAXTIME)*120
           fgColor1 = "hsl(#{hue}, 80%, 35%)"
           fgColor2 = "hsl(#{hue}, 95%, 50%)"
           textColor = "hsl(#{hue}, 20%, 30%)"
-          drawTicks()
           return
 
         do () ->

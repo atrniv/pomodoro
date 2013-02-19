@@ -1,1 +1,18 @@
-<div id="login" class="sprite login-button"></div>
+<div id="gyan" class="left-strip">
+
+</div>
+
+<div id="eyecandy" class="right-strip">
+  <div class="login-wrapper">
+    <canvas id="clock" width="300" height="300"></canvas>
+    <div id="login">
+      <div class="big">Login</div>
+      <div class="small">with</div>
+      <div class="sprite pl-logo-small" title="Login with Playlyfe"></div>
+    </div>
+  </div>
+  <div id="register">
+    <div class="small">No Playlyfe Account?</div>
+    <div class="big"><a href="http://www.playlyfe.com/register">Sign Up</a></div>
+  </div>
+</div>

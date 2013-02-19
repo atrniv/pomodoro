@@ -34,6 +34,17 @@ $base-font: 'Roboto', Verdana, sans-serif;
     clear: both;
   }
 }
+@mixin no-select() {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@mixin no-anchor() {
+  text-decoration: none;
+}
 
 body {
   margin: 0;
@@ -110,41 +121,144 @@ body {
   background-color: #ebebeb;
   background: url('../images/texels/foot-main.png') top left repeat;
   text-align: center;
-  border-top: 1px dotted #ddd;
+  border-top: 1px dotted #dddddd;
   z-index: 500;
-  #powered {
-    position: absolute;
-    left:50%;
-    margin-left:-78px;
-    margin-top:1em;
-    color: #555;
-    .desc {
-      line-height: 14px;
-      font-size: 12px;
-    }
-    .pl-emblem {
-      @include inline-block();
-      width:89px;
-      margin-left:0.5em;
-      a { display: block; }
+  .trim {
+    position: relative;
+    width:100%;
+    margin-top:-7px;
+    height:7px;
+    background: url('../images/texels/foot-trim.png') top left repeat;
+    background-color: transparent;
+    @include box-shadow(white 0 5px 5px 0);
+    z-index: 501;
+  }
+}
+#help-nav, #about-nav {
+  float:left;
+  padding: 1em 0 0;
+  color: #333333;
+  line-height: 32px;
+  ul {
+    list-style: none;
+    margin:0;
+  }
+  ul > li {
+    margin-left:20px;
+    &:first-child { margin-left: 0; }
+    float: left;
+    text-transform: uppercase;
+    font-weight: 300;
+    a {
+      color: #d92332;
+      @include no-anchor();
     }
   }
 }
-#login {
-  cursor: pointer;
-  margin:50px auto 0;
+#about-nav {
+  float:right;
+  .pl-logo-small { display: block; }
 }
+
+
 #main {
   position: relative;
   min-height: 80%;
-  padding:20px 20px 10px;
-  top:75px;
+  margin-top:5em;
 
-  text-align: center;
   color: #333;
-  font-size: 20px;
   z-index: 50;
 }
+.left-strip, .right-strip {
+  box-sizing: border-box;
+  min-height: 50%;
+  float: left;
+  width:500px;
+  padding:0 100px 0;
+  font-weight: 300;
+  text-align: center;
+}
+
+#gyan {
+  text-align: left;
+  h3 {
+    text-transform: uppercase;
+    color: #d92332;
+    @include text-shadow(rgba(black, 0.5) 0 2px 2px);
+  }
+  p {
+    color: #aaaaaa;
+    font-size: 14px;
+    line-height: 21px;
+    em {
+      color: #d92332;
+      font-weight: 400;
+    }
+    a {
+      color: #d92332;
+      @include no-anchor();
+    }
+  }
+
+}
+#time-machine {
+  margin-top:30px;
+  @include text-shadow(rgba(black, 0.5) 0 2px 2px);
+  text-transform: uppercase;
+  color: #d92332;
+  .med { font-size:36px; line-height:36px; }
+  .conn {
+    hr { width: 120px; @include inline-block(); height:2px; background-color: white; }
+    .small { @include inline-block(); color: #aaaaaa; font-size:16px; line-height:16px; padding:0 5px; }
+  }
+  .small { font-size:22px; line-height:26px; }
+  .big { font-size:42px; line-height:48px; }
+  #pomo-technique-logo {
+    margin-top:120px;
+    background: url('../images/pomo-technik.png');
+    width: 300px;
+    height: 106px;
+  }
+}
+
+.right-strip {
+  @include no-select();
+  padding-left:80px;
+  border-left: 1px solid #888;
+  text-transform: uppercase;
+  .login-wrapper {
+    position: relative;
+  }
+  #clock {
+    position: relative;
+    top:0; left:0;
+  }
+  #login {
+    position: absolute;
+    top:105px;
+    width: 100%;
+    left:0;
+    cursor: pointer;
+    color: #aaaaaa;
+    &:hover { color: #ffffff; }
+    .big { font-size:48px; line-height: 45px; @include text-shadow(rgba(black, 0.5) 0 2px 2px);
+      a { color: #aaaaaa; @include no-anchor(); }
+      a:hover { color: #ffffff; }
+    }
+    .small { font-size:18px; line-height: 25px; @include text-shadow(rgba(black, 0.5) 0 1px 1px); }
+    .pl-logo-small { margin: 0 auto; }
+  }
+  #register {
+    margin-top: 20px;
+    color: #aaaaaa;
+    .small { font-size:12px; line-height:12px; @include text-shadow(rgba(black, 0.5) 0 1px 1px); }
+    .big { font-size:34px; line-height:35px; @include text-shadow(rgba(black, 0.5) 0 2px 2px);
+      a { color:#aaaaaa; @include no-anchor(); }
+      a:hover { color:#ffffff; }
+    }
+  }
+}
+
 
 #affix {
   width: 1000px;
