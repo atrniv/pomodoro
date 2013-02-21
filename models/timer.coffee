@@ -14,7 +14,7 @@ define [
         switch state
           when 'started'
             @timeout = null
-            @set { endTime: new Date( new Date().getTime() + 1000 * 0.060 * 25) }, { silent: true }
+            @set { endTime: new Date( new Date().getTime() + 1000 * 60 * 25) }, { silent: true }
             @tick()
             @timeout = setInterval(((self) ->
               () ->
