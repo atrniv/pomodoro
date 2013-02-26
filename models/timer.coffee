@@ -14,7 +14,8 @@ define [
         switch state
           when 'started'
             @timeout = null
-            @set { endTime: new Date( new Date().getTime() + 1000 * 60 * 25) }, { silent: true }
+            @set { duration: 1000 * 60 *25 }, { silent: true }
+            @set { endTime: new Date( new Date().getTime() + @get('duration') ) }, { silent: true }
             @tick()
             @timeout = setInterval(((self) ->
               () ->
@@ -27,6 +28,8 @@ define [
     tick: () ->
       now = new Date()
       millisecs = (@get('endTime') - now)
+      duration = @get('duration')
+      @set { progress: 1 - (duration - millisecs)/duration }, { silent: true }
       @set { minutes: parseInt(Math.floor(millisecs/(1000*60))) }, { silent: true }
       @set seconds: parseInt(Math.floor(millisecs%(1000*60))/1000)
       if millisecs < 0

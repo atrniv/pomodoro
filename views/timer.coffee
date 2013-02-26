@@ -1,10 +1,12 @@
 define [
   'cs!modules/core'
   'playlyfe'
+  'audioLib'
+  'text!/sounds/metronome'
   'cs!views/complete'
   'cs!views/alert'
   'rdust!templates/timer'
-], (Core, Playlyfe, CompleteTaskView, AlertView) ->
+], (Core, Playlyfe, AudioLib, metronome, CompleteTaskView, AlertView) ->
   TimerView = Core.Layout.extend
 
     id: 'taskCenter'
@@ -28,6 +30,47 @@ define [
       Playlyfe.api "/trees/#{@model.get('rootId')}/state", (data) ->
         # console.log data
         return
+
+      @playTicker()
+      return
+
+    playTicker: () ->
+      self = @
+      tempo = 120
+      notesPerBeat =  2
+      tickCounter = 1
+      tick = 0
+
+      @device = AudioLib.AudioDevice((buffer, channelCount) ->
+        self.sampler.append buffer, channelCount
+      , 2)
+      @sampler = AudioLib.Sampler(@device.sampleRate)
+      metrosound = atob metronome
+      @sampler.loadWav metrosound, true
+
+      @sampler.addPreProcessing () ->
+        return unless (self.model.get('state') is 'started')
+        progress = self.model.get('progress')
+        if progress < 0.05
+          volume = 1
+        else if progress < 0.10
+          volume = 1 - 0.8 * (progress-0.05)/(0.10 - 0.05)
+        else if progress < 0.7
+          volume = 0.2
+        else if progress < 0.9
+          volume = 0.2 + 0.8 * (progress - 0.7)/(0.9-0.7)
+        else
+          volume = 1
+
+        self.model.set { volume: volume }, { silent: true }
+        tickCounter = tickCounter + 1 / self.device.sampleRate * tempo / 60
+        if (tickCounter >= 1)
+            tickCounter = 0
+            if tick is 0
+              this.noteOn(440, volume)
+            else
+              this.noteOn(240, volume)
+            tick = (tick + 1) % notesPerBeat
       return
 
     serialize: () ->
@@ -50,7 +93,7 @@ define [
         Playlyfe.api "/trees/#{self.model.get('rootId')}/flows/fstart_timer/play", 'POST', () ->
           _comp = self.model.get('task').get('completed')
           _total = self.model.get('task').get('total')
-          if _total < 7
+          if _comp < 7
             if _comp >= _total
               self.model.get('task').set('total':_comp + 1)
             self.model.set state: 'started'

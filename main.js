@@ -2,6 +2,7 @@ require({
   baseUrl: '.',
   paths: {
     'jquery': 'libs/jquery/jquery-1.9.0',
+    'audioLib': 'libs/audiolib/audiolib',
     'underscore': 'libs/underscore/underscore',
     'backbone': 'libs/backbone/backbone',
     'backbone-layout-manager' : 'libs/backbone-plugins/backbone.layoutmanager',
