@@ -171,7 +171,7 @@ body {
   z-index: 50;
 }
 .left-strip, .right-strip {
-  box-sizing: border-box;
+  @include box-sizing(border-box);
   min-height: 50%;
   float: left;
   width:500px;
@@ -396,7 +396,7 @@ body {
     left:50%;
     width:600px;
     margin-left:-300px;
-    box-sizing:border-box;
+    @include box-sizing(border-box);
     border:1px dashed darken($red,20%);
     background: $red;
     color: #ededed;
@@ -418,7 +418,7 @@ body {
     top: 20%;
     left: 50%;
     margin-left: -300px;
-    box-sizing:border-box;
+    @include box-sizing(border-box);
     width: 600px;
     background-color: white;
     border:5px solid $red;
