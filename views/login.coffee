@@ -22,7 +22,7 @@ define [
       return
 
     login: (e) ->
-      Playlyfe.login()
+      window.location = 'auth'
       return
 
     showSplash: (screen) ->

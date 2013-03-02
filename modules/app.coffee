@@ -17,8 +17,7 @@ define [
       @mainLayout = new MainLayout( el: '#app' )
       @mainLayout.render()
       Playlyfe.init
-        client_id: 'MWUyZDQzNWMtY2NkZS00ZjdkLTg5MmYtZjE1ODZhZmZlZGRm'
-        redirect_uri: "http://games.localhost:8080/pomodoro"
+        proxy: 'api'
       return
 
     handleStatus: (status) ->

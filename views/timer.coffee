@@ -30,8 +30,11 @@ define [
       Playlyfe.api "/trees/#{@model.get('rootId')}/state", (data) ->
         # console.log data
         return
+      try
+        @playTicker()
+      catch e
+        console.error 'Sound disabled.'
 
-      @playTicker()
       return
 
     playTicker: () ->
@@ -42,6 +45,7 @@ define [
       tick = 0
 
       @device = AudioLib.AudioDevice((buffer, channelCount) ->
+        return unless (self.model.get('state') is 'started')
         self.sampler.append buffer, channelCount
       , 2)
       @sampler = AudioLib.Sampler(@device.sampleRate)

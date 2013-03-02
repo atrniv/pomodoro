@@ -207,7 +207,7 @@ body {
   color: $red;
   .med { font-size:36px; line-height:36px; }
   .conn {
-    hr { width: 120px; @include inline-block(); height:2px; background-color: white; }
+    hr { width: 120px; @include inline-block(); height:2px; background-color: white; color: white; }
     .small { @include inline-block(); color: #aaaaaa; font-size:16px; line-height:16px; padding:0 5px; }
   }
   .small { font-size:22px; line-height:26px; }
@@ -295,6 +295,7 @@ body {
     color: #282828;
     font-family: $base-font;
     @include border-radius(20px);
+    @include box-sizing('border-box');
     z-index: 500;
     border:1px solid #ededed;
     outline:none;
@@ -601,4 +602,15 @@ body {
       height: 32px;
     }
   }
+}
+
+a {
+  outline: none;
+  img {
+    outline: none;
+    border: 0;
+  }
+}
+img {
+  border: 0;
 }

@@ -49,7 +49,7 @@ define [
       return
 
     logout: () ->
-      Playlyfe.logout()
+      Playlyfe.logout("#{window.location}/logout")
       return
 
     serialize: () ->
