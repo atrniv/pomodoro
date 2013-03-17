@@ -9,7 +9,8 @@ define [
     routes:
       '' : 'welcome'
       'splash' : 'splash'
-      'splash/:info': 'showScreen'
+      'splash/:info': 'splash'
+      # 'help': 'help'
 
     initialize: () ->
       @started = false
@@ -19,8 +20,6 @@ define [
       Playlyfe.init
         proxy: 'api'
       return
-
-
 
     handleStatus: (status) ->
       console.log(status)
@@ -40,15 +39,19 @@ define [
           break
       return
 
-    splash: () ->
-      @mainLayout.viewLogin()
+    splash: (info = null) ->
+      console.log info
+      if Playlyfe.getStatus().code is 2 then @welcome()
+      else if info? then Core.Events.trigger 'splash', info
+      else @mainLayout.viewLogin()
       return
-
-    showScreen: (info) ->
-      Core.Events.trigger "splash", info
 
     welcome: () ->
       @mainLayout.viewWelcome()
+      return
+
+    help: () ->
+      @mainLayout.showHelp()
       return
 
   initialize: ->

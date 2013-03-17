@@ -25,22 +25,21 @@
   <div class="trim">
   </div>
   <div class="wrapper clearfix">
-  {^user}
     <nav id="help-nav">
       <ul>
-        <li class="nav-item"><a href="#splash">Welcome</a></li>
-        <li class="nav-item"><a href="#splash/technique">The Technique</a></li>
+        {^user}
+          <li class="nav-item"><a href="#splash">Welcome</a></li>
+          <li class="nav-item"><a href="#splash/technique">The Technique</a></li>
+        {/user}
+          {!}<li class="nav-item"><a href="#splash/how-to">How To?</a></li>{!}
       </ul>
     </nav>
-  {/user}
     <nav id="about-nav">
       <ul>
-      {^user}
-        <li class="nav-item"><a href="#splash/about">About Playlyfe</a></li>
-      {/user}
+        <li class="nav-item"><a href='#splash/about'>About Playlyfe</a></li>
         <li class="nav-item">&copy; Playlyfe, 2013</li>
         <li class="nav-item">
-            <a href="http://playlyfe.com" class="pl-logo-small sprite"></a>
+            <a href="http://playlyfe.com" target='_blank' class="pl-logo-small sprite"></a>
         </li>
       </ul>
     </nav>

@@ -5,7 +5,7 @@ define [
   'text!templates/splash/technique.dust'
   'text!templates/splash/about.dust'
   'rdust!templates/login'
-], (Core, Playlyfe, tMain, tTechnique, tAbout) ->
+], (Core, Playlyfe, tmain, ttechnique, tabout) ->
 
   LoginView = Core.Layout.extend
 
@@ -28,11 +28,11 @@ define [
     showSplash: (screen) ->
       switch screen
         when 'technique'
-          @$('#gyan').html(tTechnique)
+          @$('#gyan').html(ttechnique)
         when 'about'
-          @$('#gyan').html(tAbout)
+          @$('#gyan').html(tabout)
         else
-          @$('#gyan').html(tMain)
+          @$('#gyan').html(tmain)
       return
 
     afterRender: () ->
@@ -86,8 +86,9 @@ define [
 
         tweenTimer = () ->
           # self.clearCanvas()
-          drawTicks()
           TIME -= 0.1
+          self.clearCanvas()
+          drawTicks()
           hue = (MAXTIME-TIME)/MAXTIME*120
           fgColor1 = "hsl(#{hue}, 80%, 35%)"
           return
