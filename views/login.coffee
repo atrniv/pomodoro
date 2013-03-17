@@ -1,9 +1,9 @@
 define [
   'cs!modules/core'
   'playlyfe'
-  'text!/templates/splash/main'
-  'text!/templates/splash/technique'
-  'text!/templates/splash/about'
+  'text!templates/splash/main.dust'
+  'text!templates/splash/technique.dust'
+  'text!templates/splash/about.dust'
   'rdust!templates/login'
 ], (Core, Playlyfe, tMain, tTechnique, tAbout) ->
 

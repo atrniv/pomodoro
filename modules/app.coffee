@@ -20,7 +20,10 @@ define [
         proxy: 'api'
       return
 
+
+
     handleStatus: (status) ->
+      console.log(status)
       if not @started
         Core.history.start()
         @started = true
