@@ -24,7 +24,6 @@
     'text': 'libs/require-js-plugins/text',
     'dust' : 'libs/dust/dust-full-1.1.1',
     'dust-helpers' : 'libs/dust/dust-helpers-1.1.0',
-    'q': 'libs/q/q.min',
     'playlyfe' : 'libs/playlyfe/pl'
   }
 })
